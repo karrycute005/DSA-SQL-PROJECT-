@@ -8,17 +8,16 @@ This project aims to generate insights into the sales performance of the kultra 
 
 ### DATA SOURCES:
 
-The primary source of the data used is KMS Case study.csv and KMS Order status.csv . It was provided by the (DSA Incubator Hub). You can download it in file repository.
+The primary source of the data used is KMS Case study.csv and KMS Order status.csv . It was provided by the DSA (Incubator Hub). You can download it in file repository at the top.
 
 ### TOOL USED:
 - SQL server( for Querying and Analysis)
-- Microsoft Excel ( for cfreating a report)
 
 ### DATA CLEANING AND PREPARATION
 
 The following actions where taken,
 1. Data loading and inspection
-2. 
+2. Data transformation
 
 ### EXPLORATORY DATA ANALYSIS
 
@@ -33,7 +32,7 @@ It involved the exploring of the data to answer some questions about the data su
 8. Which corporate customer placed the most number of orders in 2009 - 2012?
 9. Which consumer customer was the most profitable
 10. Which customer returned items, and what segment do they belong to?
-11. if the delivery truck is the most economical but the slowets shiping methpd and express air is yhe fastst but tge  ose expensove one, doyo think hge company appropraitely spent shi[ping costs baasd on orddr priority? explain your answer.
+11. if the delivery truck is the most economical but the slowest shiping method and express air is the fastest but the most expensive one, do you think the company appropraitely spent shipping costs based on order priority? explain your answer.
 
 ### DATA ANALYSIS
  1. The highest sale of product
@@ -80,7 +79,7 @@ order by Revenue asc
 5. The most shipping cost and the shipping method
 ```SQL
 -- MOST SHIPPING COST AND THE SHIPPING METHOD
-Select top 1 Ship_mode, count(Shipping_cost) as Total_shipping_cost
+Select top 1 Ship_mode, sum(Shipping_cost) as Total_shipping_cost
 from [KMS ]
 group by Ship_Mode
 order by Total_shipping_cost
@@ -137,9 +136,25 @@ from [KMS ] as K
 on k.order_id = O.Order_ID
 where O.order_id is not null
 ```
+11. SHIPPING METHOD, SHIPPING COSTS BASED ON ORDER PRIORITY
+```--SHIPPING COST BASED ON ORDER PRIORITY
+Select 
+	Order_Priority,
+	ship_mode,
+count(order_id) as order_count,
+sum(shipping_cost) as Total_shipping_cost
+from [KMS ]
+group by Order_Priority,Ship_Mode
+order by Order_Priority,Total_shipping_cost desc;
+
 ### RESULTS/FINDINGS
 
+The highest product category that generated more revenue for the company was Technology and they came from these regions. " West, Ontario,and Praine. While the regions that didn't do well in sales are; Nunavut, Northwest Territories, Yukon.
+
 ### RECOMMENDATION
+
+The company should look into the regions that had poor sales and see what
+
 
 
 
