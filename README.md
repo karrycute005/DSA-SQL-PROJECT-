@@ -8,7 +8,7 @@ This project aims to generate insights into the sales performance of the kultra 
 
 ### DATA SOURCES:
 
-The primary source of the data used is KMS Case study.csv and KMS Order status.csv . It was provided by the DSA (Incubator Hub). You can download it in file repository at the top.
+The primary source of the data used is KMS Case study.csv and KMS Order status.csv . You can download it in file repository at the top.
 
 ### TOOL USED:
 - SQL server( for Querying and Analysis)
@@ -137,7 +137,8 @@ on k.order_id = O.Order_ID
 where O.order_id is not null
 ```
 11. SHIPPING METHOD, SHIPPING COSTS BASED ON ORDER PRIORITY
-```--SHIPPING COST BASED ON ORDER PRIORITY
+```SQL
+--SHIPPING COST BASED ON ORDER PRIORITY
 Select 
 	Order_Priority,
 	ship_mode,
@@ -146,14 +147,28 @@ sum(shipping_cost) as Total_shipping_cost
 from [KMS ]
 group by Order_Priority,Ship_Mode
 order by Order_Priority,Total_shipping_cost desc;
+```
 
 ### RESULTS/FINDINGS
 
-The highest product category that generated more revenue for the company was Technology and they came from these regions. " West, Ontario,and Praine. While the regions that didn't do well in sales are; Nunavut, Northwest Territories, Yukon.
+The highest product category that generated more revenue for the company was Technology and they came from these regions. " West, Ontario,and Praine. While the regions that didn't do well in sales are; Nunavut, Northwest Territories, Yukon. S
 
 ### RECOMMENDATION
 
-The company should look into the regions that had poor sales and see what
+- Provide Early Access to New Products:
+Reward loyal customers by offering them early access to new products or limited-edition items. 
+
+- Create Loyalty Programs:
+Implement a tiered loyalty program with exclusive benefits based on purchase volume or frequency, encouraging repeat business. 
+
+- Personalized Product Recommendations:
+Utilize customer data to suggest relevant products based on their past purchases and browsing history. 
+
+- Exclusive Events and Experiences:
+Invite top customers to exclusive events, workshops, or product previews to foster a sense of belonging and appreciation. 
+
+- Customer Service Focus:
+Provide excellent customer service to all customers, but prioritize exceptional support and quick issue resolution for your top customers.
 
 
 
